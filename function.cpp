@@ -53,21 +53,30 @@ void MyPriorityQueueMax<T>::push(T item) {
 }
 
 template<typename T>
-void MyPriorityQueueMax<T>::pop() {
+T MyPriorityQueueMax<T>::pop() {
     if (this->Size == 1) {
         this->Size--;
+
+        T res = Head->Data;
 
         delete Head;
 
         Tail = nullptr;
         Head = nullptr;
+        return res;
     } else if (this->Size > 1) {
         this->Size--;
         Node *tmpEl = Head->Next;
 
+        T res = Head->Data;
+
+
         delete Head;
         Head = tmpEl;
+        return res;
     }
+    std::cerr<<"ERROR";
+    return 0;
 }
 
 template<typename T>
@@ -128,21 +137,29 @@ void MyPriorityQueueMin<T>::push(T item) {
 }
 
 template<typename T>
-void MyPriorityQueueMin<T>::pop() {
+T MyPriorityQueueMin<T>::pop() {
     if (this->Size == 1) {
         this->Size--;
+
+        T res = Head->Data;
 
         delete Head;
 
         Tail = nullptr;
         Head = nullptr;
+        return res;
     } else if (this->Size > 1) {
         this->Size--;
         Node *tmpEl = Head->Next;
 
+        T res = Head->Data;
+
         delete Head;
         Head = tmpEl;
+        return res;
     }
+    std::cerr<<"ERROR";
+    return 0;
 }
 
 template<typename T>

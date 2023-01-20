@@ -16,7 +16,7 @@ public:
 
     virtual void push(T) = 0;
 
-    virtual void pop() = 0;
+    virtual T pop() = 0;
 
 
     virtual T peek() = 0;
@@ -37,7 +37,7 @@ public:
 
     void push(T);
 
-    void pop();
+    T pop();
 
     T peek();
 
@@ -58,7 +58,7 @@ public:
 
     void push(T);
 
-    void pop();
+    T pop();
 
     T peek();
 

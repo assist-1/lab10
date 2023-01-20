@@ -9,9 +9,9 @@ int main() {
     A.push(2);
     A.push(1);
     cout << A;
-    A.pop();
-    A.pop();
-    A.pop();
+    cout<<"pop - "<<A.pop()<<"\n";
+    cout<<"pop - "<<A.pop()<<"\n";
+    cout<<"pop - "<<A.pop()<<"\n";
     cout<<A<<"\n\n";
 
     MyPriorityQueueMin<int> B;
@@ -21,9 +21,9 @@ int main() {
     B.push(2);
     B.push(1);
     cout << B;
-    B.pop();
-    B.pop();
-    B.pop();
+    cout<<"pop - "<<B.pop()<<"\n";
+    cout<<"pop - "<<B.pop()<<"\n";
+    cout<<"pop - "<<B.pop()<<"\n";
     cout<<B<<"\n\n";
 
     MyPriorityQueueMax<char> C;
@@ -38,9 +38,9 @@ int main() {
     C.push('i');
     C.push('j');
     cout << C;
-    C.pop();
-    C.pop();
-    C.pop();
+    cout<<"pop - "<<C.pop()<<"\n";
+    cout<<"pop - "<<C.pop()<<"\n";
+    cout<<"pop - "<<C.pop()<<"\n";
     cout<<C<<"\n\n";
 
     MyPriorityQueueMin<char> D;
@@ -55,9 +55,9 @@ int main() {
     D.push('i');
     D.push('j');
     cout << D;
-    D.pop();
-    D.pop();
-    D.pop();
+    cout<<"pop - "<<D.pop()<<"\n";
+    cout<<"pop - "<<D.pop()<<"\n";
+    cout<<"pop - "<<D.pop()<<"\n";
     cout<<D<<"\n\n";
     return 0;
 }
