@@ -12,16 +12,16 @@ struct elem {
 template<class type>
 class queue {
  public:
-  virtual size_t size()=0;
-  virtual void push(type)=0;
-  virtual type pop()=0;
-  virtual void peek()=0;
+  virtual size_t size() = 0;
+  virtual void push(type) = 0;
+  virtual type pop() = 0;
+  virtual void peek() = 0;
 };
 
 // добавление в конец очереди, удаление из конца очереди
 
 template<class type>
-class queueMax: public queue<type>{
+class queueMax : public queue<type> {
  protected:
   struct elem<type> *last;
   size_t count = 0;
@@ -34,9 +34,9 @@ class queueMax: public queue<type>{
 };
 
 template<class type>
-void queueMax<type>::push(type value){
+void queueMax<type>::push(type value) {
   struct elem<type> *temp;
-  temp = (struct elem<type>*)malloc(sizeof(struct elem<type>));
+  temp = (struct elem<type> *) malloc(sizeof(struct elem<type>));
   temp->value = value;
   temp->next = nullptr;
   if (count == 0) {
@@ -51,7 +51,7 @@ void queueMax<type>::push(type value){
 template<class type>
 type queueMax<type>::pop() {
   if (count == 0) {
-    std::cerr << "Error: Arrive is empty." << std::endl;
+    std::cerr << "Error: Arrive is empty1." << std::endl;
     return 0;
   } else {
     struct elem<type> *temp;
@@ -71,7 +71,7 @@ type queueMax<type>::pop() {
 template<class type>
 void queueMax<type>::peek() {
   if (count == 0) {
-    std::cerr << "Error: Arrive is empty." << std::endl;
+    std::cerr << "Error: Arrive is empty2." << std::endl;
   } else {
     struct elem<type> *temp;
     type value = last->value;
@@ -93,7 +93,7 @@ size_t queueMax<type>::size() {
 // добавление в начало очереди, удаление из начала очереди
 
 template<class type>
-class queueMin: public queue<type>{
+class queueMin : public queue<type> {
  protected:
   struct elem<type> *last;
   size_t count = 0;
@@ -108,7 +108,7 @@ class queueMin: public queue<type>{
 template<class type>
 void queueMin<type>::push(type value) {
   struct elem<type> *temp;
-  temp = (struct elem<type>*)malloc(sizeof(struct elem<type>));
+  temp = (struct elem<type> *) malloc(sizeof(struct elem<type>));
   temp->value = value;
   temp->next = nullptr;
   if (count == 0) {
@@ -125,7 +125,7 @@ void queueMin<type>::push(type value) {
 template<class type>
 type queueMin<type>::pop() {
   if (count == 0) {
-    std::cerr << "Error: Arrive is empty." << std::endl;
+    std::cerr << "Error: Arrive is empty3." << std::endl;
     return 0;
   } else {
     struct elem<type> *temp;
@@ -141,7 +141,7 @@ type queueMin<type>::pop() {
 template<class type>
 void queueMin<type>::peek() {
   if (count == 0) {
-    std::cerr << "Error: Arrive is empty." << std::endl;
+    std::cerr << "Error: Arrive is empty4." << std::endl;
   } else {
     struct elem<type> *temp;
     type value = first->value;
@@ -159,27 +159,25 @@ size_t queueMin<type>::size() {
 // перегрузка оператора <<
 
 template<class type>
-std::ostream& operator << (std::ostream &ostream, queueMax<type> &queue_max) {
-  std::string output;
+std::ostream &operator<<(std::ostream &ostream, queueMax<type> &queue_max) {
   struct elem<type> *temp;
   temp = queue_max.first;
   for (size_t i = 0; i < queue_max.size(); ++i) {
-    output += std::to_string(temp->value) + " ";
+    ostream << temp->value << " ";
     temp = temp->next;
   }
-  return ostream << output;
+  return ostream;
 }
 
 template<class type>
-std::ostream& operator << (std::ostream &ostream, queueMin<type> &queue_min) {
-  std::string output;
+std::ostream &operator<<(std::ostream &ostream, queueMin<type> &queue_min) {
   struct elem<type> *temp;
   temp = queue_min.first;
   for (size_t i = 0; i < queue_min.size(); ++i) {
-    output += std::to_string(temp->value) + " ";
+    ostream << temp->value << " ";
     temp = temp->next;
   }
-  return ostream << output;
+  return ostream;
 }
 
 int main() {
@@ -204,7 +202,7 @@ int main() {
   pop_min = queue_min.pop();
   queue_min.peek();
 
-  std::cout << queue_max << "| " << queue_max.size() << " | " << pop_max << std::endl;
-  std::cout << queue_min << "| " << queue_min.size() << " | " << pop_min << std::endl;
+  std::cout << "elem: " << queue_max << "| size: " << queue_max.size() << " | " << "pop: " << pop_max << std::endl;
+  std::cout << "elem: " << queue_min << "| size: " << queue_min.size() << " | " << "pop: " << pop_min << std::endl;
   return 0;
 }
