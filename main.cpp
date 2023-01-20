@@ -18,9 +18,25 @@ public:
 };
 
 int main() {
+	// example 1
+	MyPriorityQueue<int> queue(3);
+	queue.push(1);
+	queue.push(2);
+	std::cout << "Elements count: " << queue.size() << std::endl;
+	queue.push(3);
+	std::cout << "Forward element (pop): " << queue.pop() << std::endl;
+	std::cout << "Elements count: " << queue.size() << std::endl;
+	queue.push(4);
+	std::cout << "Forward element (peek): " << queue.peek() << std::endl;
+	std::cout << "Elements count: " << queue.size() << std::endl;
 
+	std::cout << "###################################" << std::endl;
+
+	// example 2
+	
 	return 0;
 }
+
 
 // ***description of class methods***
 
