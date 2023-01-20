@@ -18,6 +18,7 @@ public:
 };
 
 int main() {
+	
 	// example 1
 	MyPriorityQueue<int> queue1(3);
 	queue1.push(1);
@@ -30,7 +31,7 @@ int main() {
 	std::cout << "Forward element (peek): " << queue1.peek() << std::endl;
 	std::cout << "Elements count: " << queue1.size() << std::endl;
 
-	std::cout << "###################################" << std::endl;
+	std::cout << "\n###################################\n" << std::endl;
 
 	// example 2
 	MyPriorityQueue<char> queue2(3);
