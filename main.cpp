@@ -16,3 +16,8 @@ public:
 	data_type peek();
 	int size();
 };
+
+int main() {
+
+	return 0;
+}
