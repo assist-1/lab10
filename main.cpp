@@ -51,7 +51,7 @@ void queueMax<type>::push(type value) {
 template<class type>
 type queueMax<type>::pop() {
   if (count == 0) {
-    std::cerr << "Error: Arrive is empty1." << std::endl;
+    std::cerr << "Error: Arrive is empty." << std::endl;
     return 0;
   } else {
     struct elem<type> *temp;
@@ -71,7 +71,7 @@ type queueMax<type>::pop() {
 template<class type>
 void queueMax<type>::peek() {
   if (count == 0) {
-    std::cerr << "Error: Arrive is empty2." << std::endl;
+    std::cerr << "Error: Arrive is empty." << std::endl;
   } else {
     struct elem<type> *temp;
     type value = last->value;
@@ -125,7 +125,7 @@ void queueMin<type>::push(type value) {
 template<class type>
 type queueMin<type>::pop() {
   if (count == 0) {
-    std::cerr << "Error: Arrive is empty3." << std::endl;
+    std::cerr << "Error: Arrive is empty." << std::endl;
     return 0;
   } else {
     struct elem<type> *temp;
@@ -141,7 +141,7 @@ type queueMin<type>::pop() {
 template<class type>
 void queueMin<type>::peek() {
   if (count == 0) {
-    std::cerr << "Error: Arrive is empty4." << std::endl;
+    std::cerr << "Error: Arrive is empty." << std::endl;
   } else {
     struct elem<type> *temp;
     type value = first->value;
