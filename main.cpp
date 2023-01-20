@@ -40,3 +40,11 @@ MyPriorityQueue<data_type>::~MyPriorityQueue() {
 	queue = nullptr;
 }
 
+template<typename data_type>
+void MyPriorityQueue<data_type>::push(data_type item) {
+	if(count_elements == QUEUE_SIZE) {
+		std::cerr << "ERROR: The number of queue items has reached the maximum!" << std::endl;
+		exit(1);
+	}
+	
+}
