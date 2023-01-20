@@ -68,3 +68,6 @@ data_type MyPriorityQueue<data_type>::peek() {
 	}
 	return queue[front];
 }
+
+template<typename data_type>
+int MyPriorityQueue<data_type>::size() { return count_elements; }
