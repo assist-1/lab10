@@ -21,3 +21,16 @@ int main() {
 
 	return 0;
 }
+
+// ***description of class methods***
+
+template<typename data_type>
+MyPriorityQueue<data_type>::MyPriorityQueue(int size) {
+	if(size <= 0) {
+		std::cerr << "ERROR: Queue size must be a natural number!" << std::endl;
+		exit(1);
+	}
+	queue = new data_type[size];
+	QUEUE_SIZE = size, front = 0, back = 0, count_elements = 0;
+}
+
