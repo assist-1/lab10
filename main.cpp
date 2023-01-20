@@ -46,5 +46,6 @@ void MyPriorityQueue<data_type>::push(data_type item) {
 		std::cerr << "ERROR: The number of queue items has reached the maximum!" << std::endl;
 		exit(1);
 	}
-	
+	queue[back++ % QUEUE_SIZE] = item;
+	count_elements++;
 }
