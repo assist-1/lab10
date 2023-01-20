@@ -1,6 +1,8 @@
 #ifndef NODE_H_
 #define NODE_H_
 
+#include <iostream>
+
 template<class T>
 class Node {
     T         data;
@@ -19,5 +21,11 @@ public:
     void set_data(T d) { data = d;    }
     T    get_data()    { return data; }
 };
+
+template<typename T>
+std::ostream& operator<<(std::ostream& out, Node<T>* node) {
+    out << node->get_data();
+    return out;
+}
 
 #endif
