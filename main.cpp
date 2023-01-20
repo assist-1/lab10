@@ -60,3 +60,11 @@ data_type MyPriorityQueue<data_type>::pop() {
 	return queue[front++ % QUEUE_SIZE];
 }
 
+template<typename data_type>
+data_type MyPriorityQueue<data_type>::peek() {
+	if(count_elements == 0) {
+		std::cerr << "ERROR: The number of queue items is zero!" << std::endl;
+		exit(1);
+	}
+	return queue[front];
+}
