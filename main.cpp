@@ -34,3 +34,9 @@ MyPriorityQueue<data_type>::MyPriorityQueue(int size) {
 	QUEUE_SIZE = size, front = 0, back = 0, count_elements = 0;
 }
 
+template<typename data_type>
+MyPriorityQueue<data_type>::~MyPriorityQueue() {
+	delete [] queue;
+	queue = nullptr;
+}
+
