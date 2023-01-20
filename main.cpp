@@ -19,21 +19,31 @@ public:
 
 int main() {
 	// example 1
-	MyPriorityQueue<int> queue(3);
-	queue.push(1);
-	queue.push(2);
-	std::cout << "Elements count: " << queue.size() << std::endl;
-	queue.push(3);
-	std::cout << "Forward element (pop): " << queue.pop() << std::endl;
-	std::cout << "Elements count: " << queue.size() << std::endl;
-	queue.push(4);
-	std::cout << "Forward element (peek): " << queue.peek() << std::endl;
-	std::cout << "Elements count: " << queue.size() << std::endl;
+	MyPriorityQueue<int> queue1(3);
+	queue1.push(1);
+	queue1.push(2);
+	std::cout << "Elements count: " << queue1.size() << std::endl;
+	queue1.push(3);
+	std::cout << "Forward element (pop): " << queue1.pop() << std::endl;
+	std::cout << "Elements count: " << queue1.size() << std::endl;
+	queue1.push(4);
+	std::cout << "Forward element (peek): " << queue1.peek() << std::endl;
+	std::cout << "Elements count: " << queue1.size() << std::endl;
 
 	std::cout << "###################################" << std::endl;
 
 	// example 2
-	
+	MyPriorityQueue<char> queue2(3);
+	queue2.push('a');
+	queue2.push('b');
+	std::cout << "Elements count: " << queue2.size() << std::endl;
+	queue2.push('c');
+	std::cout << "Forward element (pop): " << queue2.pop() << std::endl;
+	std::cout << "Elements count: " << queue2.size() << std::endl;
+	queue2.push('d');
+	std::cout << "Forward element (peek): " << queue2.peek() << std::endl;
+	std::cout << "Elements count: " << queue2.size() << std::endl;
+
 	return 0;
 }
 
