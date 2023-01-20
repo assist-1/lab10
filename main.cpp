@@ -49,3 +49,14 @@ void MyPriorityQueue<data_type>::push(data_type item) {
 	queue[back++ % QUEUE_SIZE] = item;
 	count_elements++;
 }
+
+template<typename data_type>
+data_type MyPriorityQueue<data_type>::pop() {
+	if(count_elements == 0) {
+		std::cerr << "ERROR: The number of queue items is zero!" << std::endl;
+		exit(1);
+	}
+	count_elements--;
+	return queue[front++ % QUEUE_SIZE];
+}
+
