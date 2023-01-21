@@ -70,7 +70,23 @@ type PriorityQueue<type>::pop(){
     return first;
    
 }
+template<typename type>
+std::ostream& operator<<(std::ostream& stream, PriorityQueue<type> &p) {
+    int n=p.size();
+    for (int i=0;i<n;++i){
+    stream<<p.pop()<<'\n';
+   }
+    return stream;
+}
+int main(){
+PriorityQueue<int> a(4);
+a.push(7);
+a.push(1);
+a.push(4);
+a.push(4);
+cout<<a;
 
+}
 
 
 
