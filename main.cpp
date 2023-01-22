@@ -259,11 +259,12 @@ int main() {
 // c
 // 1
 
-//Average time of push_back after 3 attempts: 2.3e-07
-//Average time of pop_front after 3 attempts: 1.93333e-07
-//Average time of push_front after 3 attempts: 1.73333e-07
-//Average time of pop_back after 3 attempts: 1.96667e-07
+//Average time of push_back after 3 attempts: (double) ((2.4e-07 + 2.3e-07 + 2.2e-07) / 3) = 2.3e-07
+//Average time of pop_front after 3 attempts: (double) ((2.1e-07 + 1.4e-07 + 2.3e-07) / 3) = 1.93333e-07
+//Average time of push_front after 3 attempts: (double) ((1.8e-07 + 1.7e-07 + 1.7e-07) / 3) = 1.73333e-07
+//Average time of pop_back after 3 attempts: (double) ((2e-07 + 2.2e-07 + 1.7e-07) / 3) = 1.96667e-07
 //Получились близкие друг к другу значения
 
-//ВЫВОД: вставка элемента и его удаление в начале дека происходит так же быстро, как и в конце дека (асимптотическая сложность O(1))
+//ВЫВОД: вставка элемента и его удаление в начале дека происходит так же быстро, как и в конце дека (асимптотическая сложность каждого из 4 методов (push_back, pop_front, push_front, pop_back) равна O(1))
+
 }
