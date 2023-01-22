@@ -35,16 +35,37 @@ class queueMax : public queue<type> {
 
 template<class type>
 void queueMax<type>::push(type value) {
-  struct elem<type> *temp;
+  struct elem<type> *temp, *comp, *prev;
   temp = (struct elem<type> *) malloc(sizeof(struct elem<type>));
   temp->value = value;
-  temp->next = nullptr;
   if (count == 0) {
+    temp->next = nullptr;
     first = temp;
+    last = temp;
   } else {
-    last->next = temp;
+    comp = first;
+    while (temp->value > comp->value) {
+      comp = comp->next;
+      if (comp == nullptr) {
+        break;
+      }
+    }
+    if (comp == nullptr) {
+      temp->next = nullptr;
+      last->next = temp;
+      last = temp;
+    } else if (comp == first) {
+      temp->next = first;
+      first = temp;
+    } else {
+      prev = first;
+      while (prev->next != comp) {
+        prev = prev->next;
+      }
+      temp->next = comp;
+      prev->next = temp;
+    }
   }
-  last = temp;
   ++count;
 }
 
@@ -85,6 +106,7 @@ void queueMax<type>::peek() {
     --count;
   }
 }
+
 template<class type>
 size_t queueMax<type>::size() {
   return count;
@@ -107,17 +129,36 @@ class queueMin : public queue<type> {
 
 template<class type>
 void queueMin<type>::push(type value) {
-  struct elem<type> *temp;
+  struct elem<type> *temp, *comp, *prev;
   temp = (struct elem<type> *) malloc(sizeof(struct elem<type>));
   temp->value = value;
-  temp->next = nullptr;
   if (count == 0) {
+    temp->next = nullptr;
     first = temp;
     last = temp;
   } else {
-    temp->next = first;
-    last = first;
-    first = temp;
+    comp = first;
+    while (temp->value < comp->value) {
+      comp = comp->next;
+      if (comp == nullptr) {
+        break;
+      }
+    }
+    if (comp == nullptr) {
+      temp->next = nullptr;
+      last->next = temp;
+      last = temp;
+    } else if (comp == first) {
+      temp->next = first;
+      first = temp;
+    } else {
+      prev = first;
+      while (prev->next != comp) {
+        prev = prev->next;
+      }
+      temp->next = comp;
+      prev->next = temp;
+    }
   }
   ++count;
 }
@@ -151,6 +192,7 @@ void queueMin<type>::peek() {
     --count;
   }
 }
+
 template<class type>
 size_t queueMin<type>::size() {
   return count;
@@ -184,25 +226,27 @@ int main() {
   queueMax<int> queue_max;
   queueMin<int> queue_min;
 
+  queue_max.push(5);
   queue_max.push(1);
   queue_max.push(2);
-  queue_max.push(3);
   queue_max.push(4);
-  queue_max.push(5);
+  queue_max.push(3);
   int pop_max;
   pop_max = queue_max.pop();
   queue_max.peek();
 
+  std::cout << "elem: " << queue_max << "| size: " << queue_max.size() << " | " << "pop: " << pop_max << std::endl;
+
   queue_min.push(1);
+  queue_min.push(4);
   queue_min.push(2);
   queue_min.push(3);
-  queue_min.push(4);
   queue_min.push(5);
   int pop_min;
   pop_min = queue_min.pop();
   queue_min.peek();
 
-  std::cout << "elem: " << queue_max << "| size: " << queue_max.size() << " | " << "pop: " << pop_max << std::endl;
   std::cout << "elem: " << queue_min << "| size: " << queue_min.size() << " | " << "pop: " << pop_min << std::endl;
+
   return 0;
 }
