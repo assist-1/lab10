@@ -6,8 +6,9 @@ class PriorityQueue{
     type *items;
     int max_len;
     int SIZE;
-    int counter;
+    int index;
     public:
+    int counter;
     PriorityQueue(int);
     ~PriorityQueue();
     int size();
