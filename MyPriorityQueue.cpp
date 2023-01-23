@@ -4,6 +4,7 @@ PriorityQueue<type>::PriorityQueue(int len1){
     items= new type[len1];
     max_len=len1;
     SIZE=0;
+    counter=-1;
 }
 
 template<typename type>
@@ -22,15 +23,6 @@ bool PriorityQueue<type>::is_full(){
 template<typename type>
 int PriorityQueue<type>::size(){return SIZE;}
 template<typename type>
-type PriorityQueue<type>::peek(){
-    if(is_empty()){
-        cout<<"PriorityQueue is empty\n";
-        exit(1);
-    }
-    return items[0];
-}
-//по возрастанию
-template<typename type>
 void PriorityQueue<type>::push(type item){
     if(is_full()){
         cout<<"PriorityQueue is full\n";
@@ -38,7 +30,7 @@ void PriorityQueue<type>::push(type item){
     }
     int index=-1;
     for(int i=0;i<SIZE;++i){
-        if(item<items[i]){
+        if(item>items[i]){
             index=i;
             break;
         }
@@ -71,19 +63,29 @@ type PriorityQueue<type>::pop(){
    
 }
 template<typename type>
+type PriorityQueue<type>::peek(){
+    if(is_empty()){
+        cout<<"PriorityQueue is empty\n";
+        exit(1);
+    }
+    counter++;
+    return items[counter];
+   
+}
+template<typename type>
 std::ostream& operator<<(std::ostream& stream, PriorityQueue<type> &p) {
     int n=p.size();
     for (int i=0;i<n;++i){
-    stream<<p.pop()<<'\n';
+    stream<<p.peek()<<'\n';
    }
     return stream;
 }
 int main(){
 PriorityQueue<int> a(4);
-a.push(7);
 a.push(1);
 a.push(4);
 a.push(4);
+a.push(7);
 cout<<a;
 
 }
