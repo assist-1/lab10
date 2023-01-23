@@ -91,17 +91,15 @@ std::ostream& operator<<(std::ostream& stream, PriorityQueue<type> &p) {
 }
 int main(){
 PriorityQueue<int> a(1);
-// a.push(3);
-// a.push(14);
-// a.push(17);
-// a.push(55);
-// a.push(26);
-// a.push(14);
-// a.push(2);
-// a.push(1);
-// a.push(108);
-a.peek();
-a.peek();
+a.push(3);
+a.push(14);
+a.push(17);
+a.push(55);
+a.push(26);
+a.push(14);
+a.push(2);
+a.push(1);
+a.push(108);
 cout<<a;
 
 }
