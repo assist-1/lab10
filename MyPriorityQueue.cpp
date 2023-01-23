@@ -90,7 +90,7 @@ std::ostream& operator<<(std::ostream& stream, PriorityQueue<type> &p) {
     return stream;
 }
 int main(){
-PriorityQueue<int> a(1);
+PriorityQueue<int> a(9);
 a.push(3);
 a.push(14);
 a.push(17);
