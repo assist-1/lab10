@@ -177,22 +177,22 @@ int main() {
     prime.pop_back();
     prime.push_front(2.43);
     std::cout << prime;
-	Timer t2;
+	t1.reset();
     prime.pop_front();
-	std::cout << "Time of pop_front: " << t2.elapsed() << std::endl; //
+	std::cout << "Time of pop_front: " << t1.elapsed() << std::endl; //
     std::cout << prime.size() << std::endl;
     prime.pop_front();
     std::cout << "Third example: " << std::endl;
     MyDeck<char> literal;
-	Timer t3;
+	t1.reset();
     literal.push_front('a');
-	std::cout << "Time of push_front: " << t3.elapsed() << std::endl; //
+	std::cout << "Time of push_front: " << t1.elapsed() << std::endl; //
     literal.push_front('b');
     literal.push_front('c');
     std::cout << literal;
-	Timer t4;
+	t1.reset();
     literal.pop_back();
-	std::cout << "Time of pop_back: " << t4.elapsed() << std::endl; //
+	std::cout << "Time of pop_back: " << t1.elapsed() << std::endl; //
     literal.pop_back();
     std::cout << literal;
     std::cout << literal.size() << std::endl;
