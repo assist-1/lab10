@@ -115,7 +115,7 @@ void Deck<T>::pop_front()
     Node* temp = head -> prev;
     if (temp != nullptr)
     {
-        temp -> next = nullptr; // Тут пиздец какой-то
+        temp -> next = nullptr;
     }
     else
     {
