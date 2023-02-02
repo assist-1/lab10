@@ -40,7 +40,6 @@ class MyBinaryTree
 template<typename T>
 MyBinaryTree<T>::MyBinaryTree()
 {
-    size = 0;
     head = nullptr;
 }
 
@@ -68,66 +67,66 @@ void MyBinaryTree<T>::push(T data)
             }
         }
     }
-    size += 1;
 }
 
 
-struct Trunk
+struct Tail
 {
-    Trunk *prev;
+    Tail *prev;
     std::string str;
  
-    Trunk(Trunk *prev, std::string str)
+    Tail(Tail *prev, std::string str)
     {
         this->prev = prev;
         this->str = str;
     }
 };
  
-void showTrunks(Trunk *p, std::ostream &out)
+void showTails(Tail *p, std::ostream &out)
 {
     if (p == nullptr) {
         return;
     }
  
-    showTrunks(p->prev, out);
+    showTails(p->prev, out);
     out << p->str;
 }
- 
+
+
 template<typename T>
-void printTree(Node<T>* node, Trunk *prev, bool isLeft, std::ostream& out)
+void printTree(Node<T>* node, Tail *prev, bool isLeft, std::ostream& out)
 {
     if (node == nullptr) {
         return;
     }
- 
+
     std::string prev_str = "    ";
-    Trunk *trunk = new Trunk(prev, prev_str);
+    Tail *tail = new Tail(prev, prev_str);
  
-    printTree(node->pRight, trunk, true, out);
+    printTree(node->pRight, tail, true, out);
  
     if (!prev) {
-        trunk->str = "————";
+        tail->str = "────";
     }
     else if (isLeft)
     {
-        trunk->str = "┌───";
+        tail->str = "┌───";
         prev_str = "    │";
     }
     else {
-        trunk->str = "└───";
+        tail->str = "└───";
         prev->str = prev_str;
     }
  
-    showTrunks(trunk, out);
+    showTails(tail, out);
     out << node->data << std::endl;
  
     if (prev) {
         prev->str = prev_str;
     }
-    trunk->str = "    │";
+    tail->str = "    │";
  
-    printTree(node->pLeft, trunk, false, out);
+    printTree(node->pLeft, tail, false, out);
 }
 
 
