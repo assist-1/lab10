@@ -1,88 +1,78 @@
 #include <iostream>
+#include <cmath>
 
-template<class T>
-class MyPriorityQueue{
-    int sz;
-    int length;
-    T* elems;
+template <typename T>
+class PriorityQueue {
+    T data_[100];
+    int size_;
+
 public:
-    MyPriorityQueue(int sz) : sz(sz), length(0) {
-        elems = new T[sz];
-    }
-    void push(T);
-    void pop();
-    T peek();
-    int size();
-    std::ostream& pr(std::ostream& out) {
-        for (int i = 0; i < length; ++i) {
-            out << elems[i] << ' ';
+    PriorityQueue() : size_(0) {}
+
+    void push(const T& item) {
+        data_[size_] = item;
+        int index = size_;
+        size_++;
+
+        while (index > 0) {
+            int parent = (index - 1);
+            if (data_[index] >= data_[parent]) {
+                break;
+            }
+            std::swap(data_[index], data_[parent]);
+            index = parent;
         }
+    }
+
+    T pop() {
+        T result = data_[0];
+        size_--;
+        data_[0] = data_[size_];
+
+        int index = 0;
+        while (true) {
+            int left = index + 1;
+            int right = index + 2;
+            if (left >= size_) break;
+
+            int min_child = (right >= size_ || data_[left] < data_[right]) ? left : right;
+            if (data_[index] <= data_[min_child]) break;
+
+            std::swap(data_[index], data_[min_child]);
+            index = min_child;
+        }
+        return result;
+    }
+
+    const T& peek() const { return data_[0]; }
+
+    friend std::ostream& operator<<(std::ostream& out, const PriorityQueue<T>& queue) {
+        out << "[";
+        for (int i = 0; i < queue.size_; i++) {
+            out << queue.data_[i];
+            if (i != queue.size_ - 1) out << ", ";
+        }
+        out << "]";
         return out;
     }
+
 };
 
-template<typename T>
-void MyPriorityQueue<T>::push(T el) {
-    if (length == 0) {
-        elems[0] = el;
-        length++;
-        return;
-    }
-    if (length == sz) {
-        std::cout << "Massive is full\n";
-        return;
-    }
-    for (int i = 0; i < length; ++i) {
-        if (elems[i] <= el) {
-            for (int j = length-1; j >= i; --j) {
-                elems[j+1] = elems[j];
-            }
-            elems[i] = el;
-            length++;
-            return;
-        }
-        else if (i == length - 1) {
-            elems[length++] = el;
-            return;
-        }
-    }
-    return;
-}
-
-
-template<typename T>
-int MyPriorityQueue<T>::size() {
-    return sz;
-}
-
-template<typename T>
-void MyPriorityQueue<T>::pop(){
-    if(sz == 0){
-        std::cout<<"Queue is empty\n";
-        return;
-    }
-    T first=elems[0];
-    for(int i = 0;i < sz - 1; ++i){
-        elems[i]=elems[i+1];
-    }
-    sz--;
-    return int(first) ;
-}
-
-
-template<typename T>
-std::ostream& operator<<(std::ostream& out, MyPriorityQueue<T>& queue) {
-    return queue.pr(out);
-}
-
 int main() {
-    MyPriorityQueue<int> q(5);
-    q.push(1);
-    q.push(3);
+    PriorityQueue<int> q;
     q.push(2);
-    q.push(4);
-    q.push(4);
-    q.pop();
-
     std::cout << q << std::endl;
+    q.push(3);
+    std::cout << q << std::endl;
+    q.push(1);
+    std::cout << q << std::endl;
+    q.push(5);
+    std::cout << q << std::endl;
+    q.push(4);
+    std::cout << q << std::endl;
+    q.pop();
+    std::cout << q << std::endl;
+    q.pop();
+    std::cout << q << std::endl;
+    return 0;
 }
