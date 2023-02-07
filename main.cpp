@@ -73,7 +73,7 @@ public:
     }
 
     virtual void push(ListType newItem) {
-        Element<ListType> *newElement = new Element<ListType>(newItem);
+        auto newElement = new Element<ListType>(newItem);
         if (this->first == nullptr) {
             this->first = newElement;
         } else {
@@ -93,7 +93,7 @@ template<class QueueType>
 class MyPriorityQueue : public List<QueueType> {
 public:
     void push(QueueType newItem) override {
-        Element<QueueType> *newElement = new Element<QueueType>(newItem);
+       auto newElement = new Element<QueueType>(newItem);
         if (this->first == nullptr) {
             this->first = newElement;
             this->len = 1;
@@ -152,6 +152,8 @@ int main() {
     std::cout << "Queue: " << test;
     int a = test->pop();
     std::cout << "First element (" << a << ") was poped and now the queue is " << test;
+
+    delete test;
 
     return 0;
 }
